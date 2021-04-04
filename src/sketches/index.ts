@@ -9,6 +9,7 @@ import { Lumpy } from './Lumpy';
 import { Drift } from './Drift';
 import { Devil } from './Devil';
 import { Noise } from './Noise';
+import { NerddiscoRainbow } from './NERDDISCO_Rainbow';
 
 interface SketchConstructorArgs {
   composer: EffectComposer;
@@ -31,6 +32,10 @@ export interface SketchItem {
 }
 
 export const sketches: SketchItem[] = [
+  {
+    Module: NerddiscoRainbow,
+    icon: '🌈'
+  },
   {
     Module: Smoke,
     icon: '🚬',
