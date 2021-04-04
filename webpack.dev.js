@@ -15,12 +15,9 @@ module.exports = merge(commonConfig, {
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    port: 8080,
+    port: 8081,
     // inline: false, // Uncomment when testing iOS
-    https: {
-      key: fs.readFileSync('./certs/key.pem'),
-      cert: fs.readFileSync('./certs/cert.pem'),
-    },
+    https: true,
     host: '0.0.0.0',
   },
 });
