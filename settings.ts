@@ -4,6 +4,7 @@ interface DevModeInterface {
 }
 
 export const devMode: DevModeInterface = {
-  fakeCam: 'NERDDISCO.mp4',
+  // fakeCam: 'NERDDISCO.mp4',
+  fakeCam: false,
   fps: false,
 };
