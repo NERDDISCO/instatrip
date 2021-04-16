@@ -30,12 +30,12 @@ export class NerddiscoRainbow {
         baseDisplacement: { value: 0 },
         animatedDisplacementAmp: { value: 50 },
         animatedNormalAmp: { value: 1 },
-        gridAmount: { value: 15.0 },
-        gridAmountX: { value: 1.0 },
-        gridAmountY: { value: 1.0 },
+        gridAmount: { value: 111.63 },
+        gridAmountX: { value: 4.8 },
+        gridAmountY: { value: 4.8 },
         gridWaveAutomaticFrequency: { value: true },
         gridWaveFrequency: { value: 0.1 }, 
-        gridWaveFrequencySpeed: { value: 0.5 },
+        gridWaveFrequencySpeed: { value: -0.45 },
         gridWaveExtreme: { value: false }
       },
       // Use a basic vertex

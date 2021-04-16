@@ -65,6 +65,9 @@ void main()	{
 	vec2 uv = vUv;
     vec4 color = texture2D(camTex, vVideoUv);
 
+    // We use this texture to get soft edges of face
+    vec3 edgeColor = texture2D(faceHighlightsTex, vUv).rgb;
+
 	float gridx = mod(uv.x * gridAmount, gridAmountX);
 	float gridy = mod(uv.y * gridAmount, gridAmountY);
 	float _gridWaveFrequency = gridWaveFrequency;
@@ -86,7 +89,9 @@ void main()	{
 
     // color /= vec4(color1, .4);
 
-    color.rgb = mix(color1.rgb, color.rgb, vec3(.8));
+    color.rgb = mix(color1.rgb, color.rgb, vec3(.6));
+
+    color.rgb += mix(color1.rgb, edgeColor, vec3(.2));
 
     gl_FragColor = vec4(color.rgb, color.a);
 }
