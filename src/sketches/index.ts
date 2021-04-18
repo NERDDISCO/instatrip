@@ -24,6 +24,7 @@ export interface SketchInterface {
   update?(arg0: AnimationInfo): void;
   messageText?: string;
   hideText?: () => void;
+  updateParameters?(arg0: Record<string, any>): void;
 }
 
 export interface SketchItem {
@@ -34,34 +35,6 @@ export interface SketchItem {
 export const sketches: SketchItem[] = [
   {
     Module: NerddiscoRainbow,
-    icon: '🌈'
-  },
-  {
-    Module: Smoke,
-    icon: '🚬',
-  },
-  {
-    Module: Melt,
-    icon: '💊',
-  },
-  {
-    Module: Tunnel,
     icon: '🌈',
-  },
-  {
-    Module: Lumpy,
-    icon: '🥴',
-  },
-  {
-    Module: Drift,
-    icon: '🧘🏻',
-  },
-  {
-    Module: Devil,
-    icon: '👹',
-  },
-  {
-    Module: Noise,
-    icon: '✨',
   },
 ];
