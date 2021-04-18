@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useTweaks } from "use-tweaks";
+
 import {
   renderer,
   composer,
@@ -74,6 +76,16 @@ export default function App() {
   const [messageText, setMessageText] = useState('');
   const [textVisible, setTextVisible] = useState(false);
 
+  const { gridAmount, gridAmountX, gridAmountY, gridWaveAutomaticFrequency, gridWaveFrequency, gridWaveFrequencySpeed, gridWaveExtreme } = useTweaks({
+    gridAmount: { value: 15, min: 0, max: 100 },
+    gridAmountX: { value: 1, min: 0, max: 100 },
+    gridAmountY: { value: 1, min: 0, max: 100 },
+    gridWaveAutomaticFrequency: true,
+    gridWaveFrequency: { value: 0.1, min: -10, max: 50 },
+    gridWaveFrequencySpeed: { value: 0.5, min: -5, max: 5 },
+    gridWaveExtreme: false,
+  });
+
   // Will only fire once
   useEffect(() => {
     containerRef.current.appendChild(renderer.domElement);
@@ -94,6 +106,7 @@ export default function App() {
     renderPass.renderToScreen = false;
     renderPass.clear = true;
     composer.reset();
+
     while (scene.children.length > 0) {
       scene.remove(scene.children[0]);
     }
@@ -117,6 +130,34 @@ export default function App() {
       setTextVisible(false);
     };
   }, [sketchIndex]);
+
+  // Update the parameters of the sketch
+  useEffect(() => {
+    if (
+      currentSketch &&
+      currentSketch.current &&
+      currentSketch.current.updateParameters
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      currentSketch.current.updateParameters({
+        gridAmount,
+        gridAmountX,
+        gridAmountY,
+        gridWaveAutomaticFrequency,
+        gridWaveFrequency,
+        gridWaveFrequencySpeed,
+        gridWaveExtreme,
+      });
+    }
+  }, [
+    gridAmount,
+    gridAmountX,
+    gridAmountY,
+    gridWaveAutomaticFrequency,
+    gridWaveFrequency,
+    gridWaveFrequencySpeed,
+    gridWaveExtreme,
+  ]);
 
   return (
     <Wrapper>

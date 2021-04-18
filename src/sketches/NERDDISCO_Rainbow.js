@@ -34,9 +34,9 @@ export class NerddiscoRainbow {
         gridAmountX: { value: 4.8 },
         gridAmountY: { value: 4.8 },
         gridWaveAutomaticFrequency: { value: true },
-        gridWaveFrequency: { value: 0.1 }, 
+        gridWaveFrequency: { value: 0.1 },
         gridWaveFrequencySpeed: { value: -0.45 },
-        gridWaveExtreme: { value: false }
+        gridWaveExtreme: { value: false },
       },
       // Use a basic vertex
       vertexShader: vert,
@@ -62,5 +62,15 @@ export class NerddiscoRainbow {
     this.mat.uniforms.time.value = elapsedS;
     this.mat.uniforms.animatedDisplacementAmp.value = 50 * metrics.zed;
     this.mat.uniforms.masterNormal.value.copy(metrics.track.normal);
+  }
+
+  updateParameters({ gridAmount, gridAmountX, gridAmountY, gridWaveAutomaticFrequency, gridWaveFrequency, gridWaveFrequencySpeed, gridWaveExtreme }) {
+    this.mat.uniforms.gridAmount.value = gridAmount;
+    this.mat.uniforms.gridAmountX.value = gridAmountX;
+    this.mat.uniforms.gridAmountY.value = gridAmountY;
+    this.mat.uniforms.gridWaveAutomaticFrequency.value = gridWaveAutomaticFrequency;
+    this.mat.uniforms.gridWaveFrequency.value = gridWaveFrequency;
+    this.mat.uniforms.gridWaveFrequencySpeed.value = gridWaveFrequencySpeed;
+    this.mat.uniforms.gridWaveExtreme.value = gridWaveExtreme;
   }
 }
